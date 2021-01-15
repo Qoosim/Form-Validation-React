@@ -5,7 +5,8 @@ class App2 extends Component {
         super()
         this.state = {
             username: '',
-            age: null
+            age: null,
+            errormessage: ''
         }
     }
 
@@ -13,14 +14,14 @@ class App2 extends Component {
         event.preventDefault()
         let age = this.state.age
         if (!Number(age)) {
-            alert("Age must be a number")
+            alert('Age must be a number')
         }
     }
 
     handleChange = (event) => {
         let name = event.target.name
         let value = event.target.value
-
+        
         this.setState({
             [name]: value
         })
@@ -41,6 +42,7 @@ class App2 extends Component {
                                 onChange={this.handleChange}
                             />
                             <br />
+                            <label>Age:</label>
                             <input 
                                 className="form-control"
                                 type="" 

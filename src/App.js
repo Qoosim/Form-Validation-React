@@ -6,19 +6,24 @@ class App extends Component {
         super()
         this.state = {
             username: '',
-            age: null
+            age: null,
+            errormessage: ''
         }
     }
 
     handleChange = (event) => {
         let name = event.target.name
         let value = event.target.value
+        let error = ''
 
         if (name === "age") {
-            if (!Number(value)) {
-                alert('Age must be a number')
+            if (value !== '' && !Number(value)) {
+                error = <strong>Age must be a number</strong>
             }
         }
+        this.setState({
+            errormessage: error
+        })
         this.setState({
             [name]: value
         })
@@ -45,6 +50,7 @@ class App extends Component {
                                 placeholder="age"
                                 onChange={this.handleChange}
                             />
+                            {this.state.errormessage}
                         </form>
                     </div>
                 </div>
